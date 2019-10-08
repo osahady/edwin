@@ -1,6 +1,7 @@
 <?php
 use App\Post;
 use App\User;
+use App\Country;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -162,12 +163,33 @@ ELoquent Relationships
 
 // });
 
-Route::get('/user/{id}/role', function($id){
-    $user = User::find($id)->roles()->orderBy('id', 'desc')->get();
+// Route::get('/user/{id}/role', function($id){
+//     $user = User::find($id)->roles()->orderBy('id', 'desc')->get();
 
-    return $user;
+//     return $user;
 
-    // foreach ($user->roles as $role) {
-    //     echo $role;
-    // }
-});
+//     // foreach ($user->roles as $role) {
+//     //     echo $role;
+//     // }
+// });
+
+//Accessing the intermediate table / pivot
+
+// Route::get('user/pivot', function(){
+//     $user = User::find(3);
+
+//     foreach ($user->roles as $role ) {
+//         echo $role->pivot->created_at;
+//     }
+// });
+
+
+// Route::get('/user/country', function(){
+//     $country = Country::find(2);
+
+//     foreach ($country->posts as $post ) {
+//         echo $post->title ;
+//     }
+// });
+
+
