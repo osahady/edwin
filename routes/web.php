@@ -1,4 +1,5 @@
 <?php
+use App\Tag;
 use App\Post;
 use App\User;
 use App\Photo;
@@ -216,4 +217,25 @@ ELoquent Relationships
 
 // });
 
+//Polymorphic Many to Many
 
+// Route::get('/post/tag', function(){
+//     $post = Post::find(1);
+//     foreach ($post->tags as $tag) {
+//         echo $tag->name;
+//     }
+// });
+
+Route::get('/tag/post', function(){
+    $tag = Tag::find(2);
+    foreach ($tag->posts as $post) {
+        echo $post;
+    }
+});
+
+Route::get('/tag/user', function(){
+    $tag = Tag::find(1);
+    foreach ($tag->users as $user) {
+        echo $user;
+    }
+});
