@@ -12,4 +12,9 @@ class Role extends Model
     {
         return $this->belongsToMany('App\User');
     }
+
+    // public function photos()
+    // {
+    //     return $this->morphMany('App\Role', 'imageable');
+    // }
 }

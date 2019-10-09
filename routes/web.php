@@ -1,6 +1,7 @@
 <?php
 use App\Post;
 use App\User;
+use App\Photo;
 use App\Country;
 /*
 |--------------------------------------------------------------------------
@@ -190,6 +191,29 @@ ELoquent Relationships
 //     foreach ($country->posts as $post ) {
 //         echo $post->title ;
 //     }
+// });
+
+//Polymorphic relationships
+
+// Route::get('/user/photos', function(){
+//     $user = User::find(1);
+//     foreach ($user->photos as $photo) {
+//         return $photo->path;
+//     }
+// });
+
+
+// Route::get('/post/{id}/photos', function($id){
+//     $post = Post::find($id);
+//     foreach ($post->photos as $photo) {
+//         echo $photo->path . "</br>";
+//     }
+// });
+
+// Route::get('photo/{id}/post', function($id){
+//     $photo = Photo::findOrFail($id);
+//     return $photo->imageable;
+
 // });
 
 
