@@ -226,16 +226,20 @@ ELoquent Relationships
 //     }
 // });
 
-Route::get('/tag/post', function(){
-    $tag = Tag::find(2);
-    foreach ($tag->posts as $post) {
-        echo $post;
-    }
-});
+// Route::get('/tag/post', function(){
+//     $tag = Tag::find(2);
+//     foreach ($tag->posts as $post) {
+//         echo $post;
+//     }
+// });
 
-Route::get('/tag/user', function(){
-    $tag = Tag::find(1);
-    foreach ($tag->users as $user) {
-        echo $user;
-    }
-});
+// Route::get('/tag/user', function(){
+//     $tag = Tag::find(1);
+//     foreach ($tag->users as $user) {
+//         echo $user;
+//     }
+// });
+
+//crud application 
+
+Route::resource('/posts', 'PostController');
