@@ -4,6 +4,7 @@ use App\Post;
 use App\User;
 use App\Photo;
 use App\Country;
+use Carbon\Carbon;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,10 +25,10 @@ Route::get('/', function () {
 |--------------------------------------------------------------------------
 
 */
-Route::get('/insert', function(){
-    DB::insert('INSERT INTO posts(title, content, user_id) VALUES (?, ?, ?)', ['laravel', 'laravel is good framework', 1]);
+// Route::get('/insert', function(){
+//     DB::insert('INSERT INTO posts(title, content, user_id) VALUES (?, ?, ?)', ['laravel', 'laravel is good framework', 1]);
 
-});
+// });
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -87,9 +88,9 @@ ELoquent
 //     $post->save();
 // });
 
-Route::get('/create', function(){
-    Post::create(['title' => 'title three', 'content'=>'Wow I am learning with Edwin']);
-});
+// Route::get('/create', function(){
+//     Post::create(['title' => 'title three', 'content'=>'Wow I am learning with Edwin']);
+// });
 
 // Route::get('/update', function(){
 //     Post::where('id', 3)->where('is_admin', 0)->update(['title'=>'New PHP', 'content'=>'content2']);
@@ -242,4 +243,36 @@ ELoquent Relationships
 
 //crud application 
 
-Route::resource('/posts', 'PostController');
+
+
+Route::group(['middleware'=>'web'], function(){
+    Route::resource('/posts', 'PostController');
+});
+
+Route::get('/dates', function(){
+    $date = new DateTime('+1 week');
+    echo $date->format('m-d-Y');
+    echo '<br>';
+    
+    echo Carbon::now()->addDays(10)->diffForHumans();
+    echo '<br>';
+
+    echo Carbon::now()->subMonths(5)->diffForHumans();
+    echo '<br>';
+
+    echo Carbon::now()->yesterday();
+    echo '<br>';
+});
+
+Route::get('/getname', function(){
+    $user = User::find(1);
+    echo $user->name;
+});
+
+Route::get('/setname', function(){
+    $user = User::find(1);
+    $user->name = 'aymen';
+    $user->save();
+});
+
+

@@ -29,4 +29,9 @@ class Post extends Model
     {
         return $this->morphToMany('App\Tag', 'taggable');
     }
+
+    public static function scopeLatest()
+    {
+        return $query->orderBy('id', 'asc');
+    }
 }
